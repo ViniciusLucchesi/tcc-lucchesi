@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+  actixweb:
+    container_name: TestActixweb
+    build: Rustfile
+    env_file:
+      - .env
+    ports:
+      - 7000:7000
+    networks:
+      - tcc    
+    depends_on:
+      - surrealdb
+    image: lucchesi/tcc-actix
+    
+  surrealdb:
+    image: surrealdb/surrealdb:1.0.0
+    container_name: TestSurrealDB-1.0.0
+    user: root
+    env_file:
+      - .env
+    entrypoint:
+      - /surreal
+      - start
+      - --auth
+      - --user
+      - $DB_USER
+      - --pass
+      - $DB_PASS
+      - --bind
+      - 0.0.0.0:8000
+      - file://data/surreal.db
+    ports:
+      - 8000:8000
+    networks:
+      - tcc
+    volumes:
+      - surrealdb:/data
+
+volumes:
+  surrealdb:
+
+networks:
+  tcc:
+    external: true
+
