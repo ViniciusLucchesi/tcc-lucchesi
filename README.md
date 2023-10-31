@@ -1,7 +1,30 @@
+<div align="center">
+
 # TCC - Lucchesi
+
+</div>
 
 Este repositório tem o objetivo único de demonstrar quais são os passos necessários para executar o meu TCC com a intenção de testar a performance da API escrita em Rust em diferentes hardwares.
 
+<br/>
+
+### Sumário
+
+- [TCC - Lucchesi](#tcc---lucchesi)
+    - [Sumário](#sumário)
+  - [RustAPI](#rustapi)
+  - [PythonAPI](#pythonapi)
+- [Configurando o Banco](#configurando-o-banco)
+  - [Conexão](#conexão)
+  - [Registros Iniciais](#registros-iniciais)
+      - [Usuário](#usuário)
+      - [Último Web Scraping](#último-web-scraping)
+- [Carregando os dados](#carregando-os-dados)
+      - [Coletando os dados](#coletando-os-dados)
+      - [Enviando ao Rust](#enviando-ao-rust)
+- [Benchmark](#benchmark)
+
+<br/>
 <br/>
 
 ## RustAPI
@@ -15,6 +38,8 @@ cd RustAPI
 ```bash
 docker compose -f rust.yaml up
 ```
+
+<br/>
 
 ## PythonAPI
 
