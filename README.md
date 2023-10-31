@@ -12,6 +12,7 @@ Este repositório tem o objetivo único de demonstrar quais são os passos neces
 
 - [TCC - Lucchesi](#tcc---lucchesi)
     - [Sumário](#sumário)
+  - [Clonando o respositório](#clonando-o-respositório)
   - [RustAPI](#rustapi)
   - [PythonAPI](#pythonapi)
 - [Configurando o Banco](#configurando-o-banco)
@@ -27,9 +28,18 @@ Este repositório tem o objetivo único de demonstrar quais são os passos neces
 <br/>
 <br/>
 
+## Clonando o respositório
+
+Antes de mais nada é necessário clonar este projeto para você ter os arquivos do `docker-compose` em sua máquina juntamente com os arquivos `.env` que serão necessários para executar os comandos docker.
+
+```bash
+git clone https://github.com/ViniciusLucchesi/tcc-lucchesi.git
+```
+
+
 ## RustAPI
 
-Dentro do diretório `RustAPI` rode o comando abaixo para instalar e startart a aplicação feita em Rust.
+Com o repositório já clonado em sua máquina será necessário entrar na pasta `RustAPI` e executar o comando do `docker-compose` como demonstrado abaixo. 
 
 ```bash
 cd RustAPI
@@ -43,8 +53,7 @@ docker compose -f rust.yaml up
 
 ## PythonAPI
 
-Dentro da pasta `PythonAPI` rode o comando abaixo, assim como foi feito anteriormente. 
-
+Os mesmos passos devem ser realizados para executar a aplicação do FastAPI, primeiro entre no diretório `PythonAPI` em seguida rode o comando docker.
 
 ```bash
 cd PythonAPI
@@ -136,7 +145,7 @@ Essa rota coleta todos os dados relacionados a tabela `tipi` no banco de dados d
 <br/>
 
 # Benchmark
-
+****
 Para a realização do teste de performance será necessário instalar o software de benchmark chamado `oha` que pode ser encontrado [aqui](https://github.com/hatoo/oha).
 
 Para rodar o teste em sí, basta executar o comando abaixo em seu terminal (lembrando que somente a API do Rust precisa estar rodando).
