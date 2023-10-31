@@ -2,8 +2,7 @@ version: '3.9'
 
 services:
   actixweb:
-    container_name: TestActixweb
-    build: Rustfile
+    container_name: Actix-web
     env_file:
       - .env
     ports:

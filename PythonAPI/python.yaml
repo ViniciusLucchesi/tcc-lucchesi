@@ -4,7 +4,7 @@ services:
   api:
     env_file:
       - .env
-    container_name: TestFastAPI-Application
+    container_name: FastAPI
     environment:
       PORT: 7500
       PYTHONPATH: /app
