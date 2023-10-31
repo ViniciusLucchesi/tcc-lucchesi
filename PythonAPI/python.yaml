@@ -1,0 +1,54 @@
+version: '1.0'
+
+services:
+  api:
+    env_file:
+      - .env
+    container_name: TestFastAPI-Application
+    environment:
+      PORT: 7500
+      PYTHONPATH: /app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 7500 --reload
+    restart: always
+    volumes:
+      - .venv:/app/.venv
+    ports:
+      - 7500:7500
+    networks:
+      - tcc
+    depends_on:
+      - surrealdb
+    image: lucchesi/tcc-fastapi
+  
+  surrealdb:
+    container_name: TestSurrealDB_beta-11
+    env_file:
+      - .env
+    environment:
+      PORT: 8500
+    entrypoint:
+      - /surreal
+      - start
+      - --auth
+      - --user
+      - $DB_USER
+      - --pass
+      - $DB_PASSWORD
+      - --bind
+      - 0.0.0.0:8500
+      - file://var/lib/surrealdb/data.db
+    image: surrealdb/surrealdb:1.0.0-beta.11
+    ports:
+      - 8500:8500
+    networks:
+      - tcc
+    volumes:
+      - db_data:/var/lib/surrealdb/data.db
+
+volumes:
+  db_data:
+
+
+networks:
+  tcc:
+    external: true
