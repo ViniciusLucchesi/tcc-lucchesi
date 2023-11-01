@@ -4,25 +4,25 @@
 
 </div>
 
-Este repositório tem o objetivo único de demonstrar quais são os passos necessários para executar o meu TCC com a intenção de testar a performance da API escrita em Rust em diferentes hardwares.
+Este repositório tem o objetivo único de demonstrar quais são os passos necessários para executar o meu TCC com a intenção de testar o desempenho da API escrita em Rust em diferentes hardwares.
 
 <br/>
 
-### Sumário
+## Sumário
 
 - [TCC - Lucchesi](#tcc---lucchesi)
-    - [Sumário](#sumário)
+  - [Sumário](#sumário)
   - [Clonando o respositório](#clonando-o-respositório)
   - [RustAPI](#rustapi)
   - [PythonAPI](#pythonapi)
 - [Configurando o Banco](#configurando-o-banco)
   - [Conexão](#conexão)
   - [Registros Iniciais](#registros-iniciais)
-      - [Usuário](#usuário)
-      - [Último Web Scraping](#último-web-scraping)
+    - [Usuário](#usuário)
+    - [Último Web Scraping](#último-web-scraping)
 - [Carregando os dados](#carregando-os-dados)
-      - [Coletando os dados](#coletando-os-dados)
-      - [Enviando ao Rust](#enviando-ao-rust)
+  - [Coletando os dados](#coletando-os-dados)
+  - [Enviando ao Rust](#enviando-ao-rust)
 - [Benchmark](#benchmark)
 
 <br/>
@@ -76,17 +76,17 @@ Acesse a interface do SurrealDB através do site [surrealist.app](https://surrea
 
 ![Database connection](img/database_connection.png)
 
-Após todos os campos estarem preenchidos clique em `Save details` e então pressione o botão `Connect` caso a conexão não seja iniciada automaticamente.
+Após todos os campos estarem preenchidos clique em `Save details` e então pressione o botão `Connect`, caso a conexão não seja iniciada automaticamente.
 
 ## Registros Iniciais
 
 Minhas rotas precisam de alguns parâmetros iniciais para funcionarem, como autenticação de usuário e dados referentes a última atualização do scraping.
 
-Portanto deverão ser inseridos os dois registros abaixo no SurrealDB através do Surrealist no local destacado em vermelh, demostrado na imagem abaixo:
+Portanto deverão ser inseridos os dois registros abaixo no SurrealDB através do Surrealist no local destacado em vermelho, demostrado na imagem abaixo:
 
 ![Alt text](img/surrealist_query.png)
 
-#### Usuário
+### Usuário
 
 ```sql
 CREATE service:TipiAPI SET
@@ -97,7 +97,7 @@ CREATE service:TipiAPI SET
     password = crypto::argon2::generate("123456");
 ```
 
-#### Último Web Scraping
+### Último Web Scraping
 
 ```sql
 CREATE scraper:info SET
@@ -119,7 +119,7 @@ Para a execução das rotas você pode utilizar qualquer ferramenta que realize 
 Abaixo eu estou listando as rotas que deverão ser executadas e quais parâmetros devem ser passadas a cada uma delas.
 
 
-#### Coletando os dados
+## Coletando os dados
 
 ```text
 GET -> http://localhost:7500/api/v1/tipi/upgrade
@@ -130,7 +130,7 @@ pass: 123456
 
 A rota acima é responsável por realizar o web scraping no site do governo, coletando o arquivo XLSX e extraindo seus valores para converte-los em formato JSON a fim de serem inseridos no SurrealDB.
 
-#### Enviando ao Rust
+## Enviando ao Rust
 
 ```text
 GET -> http://localhost:7500/api/v1/scraper/data
@@ -145,7 +145,7 @@ Essa rota coleta todos os dados relacionados a tabela `tipi` no banco de dados d
 <br/>
 
 # Benchmark
-****
+
 Para a realização do teste de performance será necessário instalar o software de benchmark chamado `oha` que pode ser encontrado [aqui](https://github.com/hatoo/oha).
 
 Para rodar o teste em sí, basta executar o comando abaixo em seu terminal (lembrando que somente a API do Rust precisa estar rodando).
