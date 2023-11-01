@@ -74,7 +74,12 @@ Para ser possível utilizar as rotas que realizam a coleta e salvamento das info
 
 Acesse a interface do SurrealDB através do site [surrealist.app](https://surrealist.app/), com ele podemos clicar na barra superior (onde está escrito `OFFLINE`) para abrir as configurações de conexão. Dessa forma será necessário preencher os campos conforme o arquivo `.env` localizado na pasta `PythonAPI` como mostra a figura abaixo:
 
+
+<div align="center">
+
 ![Database connection](img/database_connection.png)
+
+</div>
 
 Após todos os campos estarem preenchidos clique em `Save details` e então pressione o botão `Connect`, caso a conexão não seja iniciada automaticamente.
 
@@ -84,7 +89,11 @@ Minhas rotas precisam de alguns parâmetros iniciais para funcionarem, como aute
 
 Portanto deverão ser inseridos os dois registros abaixo no SurrealDB através do Surrealist no local destacado em vermelho, demostrado na imagem abaixo:
 
+<div align="center">
+
 ![Alt text](img/surrealist_query.png)
+
+</div>
 
 ### Usuário
 
@@ -153,3 +162,11 @@ Para rodar o teste em sí, basta executar o comando abaixo em seu terminal (lemb
 ```bash
 oha -n 10000 -T application/json -d '{"ncm":"0101.21.00"}' http://localhost:7000/v1/ncm/ --disable-keepalive
 ```
+
+O objetivo é printar o resultado da maneira como está sendo mostrado na figura abaixo para que seja possível realizar uma comparação entre os diferentes hardwares.
+
+<div align="center">
+
+![benchmark](img/benchmark.png)
+
+</div>
