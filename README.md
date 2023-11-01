@@ -13,6 +13,7 @@ Este repositório tem o objetivo único de demonstrar quais são os passos neces
 - [TCC - Lucchesi](#tcc---lucchesi)
   - [Sumário](#sumário)
   - [Clonando o respositório](#clonando-o-respositório)
+  - [Docker Network](#docker-network)
   - [RustAPI](#rustapi)
   - [PythonAPI](#pythonapi)
 - [Configurando o Banco](#configurando-o-banco)
@@ -24,6 +25,7 @@ Este repositório tem o objetivo único de demonstrar quais são os passos neces
   - [Coletando os dados](#coletando-os-dados)
   - [Enviando ao Rust](#enviando-ao-rust)
 - [Benchmark](#benchmark)
+  - [Ideapad S145](#ideapad-s145)
 
 <br/>
 <br/>
@@ -36,10 +38,21 @@ Antes de mais nada é necessário clonar este projeto para você ter os arquivos
 git clone https://github.com/ViniciusLucchesi/tcc-lucchesi.git
 ```
 
+<br/>
+
+## Docker Network
+
+Também é preciso criar uma rede para que os diferentes containeres consigam se comunicar. Para fazer isso basta rodar o comando abaixo
+
+```bash
+docker network create tcc
+```
+
+<br/>
 
 ## RustAPI
 
-Com o repositório já clonado em sua máquina será necessário entrar na pasta `RustAPI` e executar o comando do `docker-compose` como demonstrado abaixo. 
+Com o repositório já clonado em sua máquina e a rede docker configurada será necessário entrar na pasta `RustAPI` e executar o comando do `docker-compose` como demonstrado abaixo. 
 
 ```bash
 cd RustAPI
@@ -166,6 +179,8 @@ oha -n 10000 -T application/json -d '{"ncm":"0101.21.00"}' http://localhost:7000
 O objetivo é printar o resultado da maneira como está sendo mostrado na figura abaixo para que seja possível realizar uma comparação entre os diferentes hardwares.
 
 <div align="center">
+
+## Ideapad S145
 
 ![benchmark](img/benchmark.png)
 
